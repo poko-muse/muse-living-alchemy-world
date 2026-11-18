@@ -1,0 +1,9 @@
+{
+  "world_name": "フラスカリア",
+  "real_day_equals_world_day": true,
+  "duplicate_processing_forbidden": true,
+  "undiscovered_material_use_forbidden": true,
+  "history_immutable": true,
+  "small_start_principle": true,
+  "seed_rule": "seed = world_seed + YYYYMMDD of flask date, recorded in history"
+}

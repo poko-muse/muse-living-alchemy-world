@@ -1,0 +1,89 @@
+{
+  "world_name": "フラスカリア",
+  "english_name": "Flaskaria - MUSE LIVING ALCHEMY WORLD",
+  "container": "巨大な丸底フラスコの内部。外の世界からは小さな箱庭に見えるが、内側では完結した地形と空を持つ。",
+  "regions": [
+    {
+      "id": "reg_001",
+      "name": "ぽこ丘",
+      "type": "hill",
+      "description": "世界の中央にあるなだらかな丘。ポコの記録小屋がある。話した小さな声が翌朝花になる場所。"
+    },
+    {
+      "id": "reg_002",
+      "name": "くるり川",
+      "type": "river",
+      "description": "ぽこ丘をぐるっと一周して循環する川。行き止まりがなく、水は錬金循環のモデルにもなっている。"
+    },
+    {
+      "id": "reg_003",
+      "name": "コルク森",
+      "type": "forest",
+      "description": "背の低いコルクの木と苔の森。採取者シルヴァの縄張り。もすもすが暮らす。"
+    },
+    {
+      "id": "reg_004",
+      "name": "映し湖",
+      "type": "lake",
+      "description": "外の空を映す小さな湖。朝露と霧が集まる。治療院が湖畔にある。"
+    },
+    {
+      "id": "reg_005",
+      "name": "ガラス壁と首の天窓",
+      "type": "boundary",
+      "description": "世界の果ての透明な壁。その向こうの外の景色は住人には巨大な空の絵に見える。Fuuがガラスを叩くと流れ星になる。"
+    },
+    {
+      "id": "reg_006",
+      "name": "ソコノマチ",
+      "type": "town",
+      "description": "フラスコ底にある最初の小さな街。人口8名から始まる。"
+    }
+  ],
+  "towns": [
+    {
+      "id": "town_001",
+      "name": "ソコノマチ",
+      "population_registered": 8,
+      "facilities": [
+        {
+          "id": "fac_001",
+          "name": "ポコの記録小屋",
+          "type": "archive",
+          "location": "ぽこ丘"
+        },
+        {
+          "id": "fac_002",
+          "name": "中央錬金工房",
+          "type": "alchemy_workshop",
+          "location": "ソコノマチ中心"
+        },
+        {
+          "id": "fac_003",
+          "name": "くるり川市場",
+          "type": "market",
+          "location": "くるり川沿い"
+        },
+        {
+          "id": "fac_004",
+          "name": "コルク森採取所",
+          "type": "gathering_post",
+          "location": "コルク森入口"
+        },
+        {
+          "id": "fac_005",
+          "name": "映し湖治療院",
+          "type": "clinic",
+          "location": "映し湖畔"
+        },
+        {
+          "id": "fac_006",
+          "name": "ブランの鍛冶小屋",
+          "type": "smithy",
+          "location": "ソコノマチ東端"
+        }
+      ]
+    }
+  ],
+  "climate": "霧の季は朝霧が多く、フラスコの首に雲がたまる。外の天気が微かに影響する。"
+}

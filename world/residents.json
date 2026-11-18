@@ -1,0 +1,229 @@
+[
+  {
+    "id": "res_001",
+    "name": "ポコ",
+    "age": null,
+    "occupation": "界守／記録者",
+    "residence": "ぽこ丘の記録小屋",
+    "organization": "記録小屋",
+    "assets": 120,
+    "knowledge": [
+      "世界の記録法",
+      "観察"
+    ],
+    "skills": {
+      "観察": 80,
+      "記録": 85,
+      "錬金術": 20
+    },
+    "personality": "のんびり屋で好奇心旺盛。二足歩行のセージグリーンの恐竜ぬいぐるみ姿、桃色のお腹、小さな角が2本。プリンが大好物。",
+    "goal": "世界を観察し、歴史を正しく記録し続ける",
+    "relationships": {
+      "res_002": "信頼する錬金術師",
+      "res_005": "記録の師"
+    },
+    "health": "良好",
+    "current_activity": "丘から街を眺め、創世の記録を書いている",
+    "past_important_events": [
+      "フラスコ暦1年1月1日に界守として目覚めた"
+    ]
+  },
+  {
+    "id": "res_002",
+    "name": "ルナ・ヴェルデ",
+    "age": 28,
+    "occupation": "錬金術師／工房長",
+    "residence": "ソコノマチ中心",
+    "organization": "中央錬金工房",
+    "assets": 340,
+    "knowledge": [
+      "基礎調合",
+      "霧の扱い",
+      "硬化理論"
+    ],
+    "skills": {
+      "錬金術": 78,
+      "研究": 75
+    },
+    "personality": "情熱的で失敗を記録するタイプ",
+    "goal": "硬化樹脂を完成させ、街の建材を変える",
+    "relationships": {
+      "res_001": "記録を任せる",
+      "res_006": "共同研究",
+      "res_003": "素材の値段でよく揉める"
+    },
+    "health": "良好",
+    "current_activity": "硬化樹脂の実験準備",
+    "past_important_events": [
+      "工房設立者。霧よけランプ油の発見者"
+    ]
+  },
+  {
+    "id": "res_003",
+    "name": "マルコ・コルク",
+    "age": 35,
+    "occupation": "商人／市場主",
+    "residence": "くるり川沿い",
+    "organization": "くるり川市場",
+    "assets": 520,
+    "knowledge": [
+      "市場相場",
+      "交渉"
+    ],
+    "skills": {
+      "商才": 80,
+      "錬金術": 15
+    },
+    "personality": "利益に敏感だが街の信用も大事にする",
+    "goal": "新素材の流通路を作り、市場を大きくする",
+    "relationships": {
+      "res_002": "素材価格で対立気味",
+      "res_004": "採取品の買い手"
+    },
+    "health": "良好",
+    "current_activity": "市場の在庫を確認している",
+    "past_important_events": [
+      "市場を開いた。ルナの発見の価値を最初は理解できなかったことがある"
+    ]
+  },
+  {
+    "id": "res_004",
+    "name": "シルヴァ・モス",
+    "age": 22,
+    "occupation": "採取者",
+    "residence": "コルク森入口",
+    "organization": "採取所",
+    "assets": 90,
+    "knowledge": [
+      "森の知識",
+      "採取"
+    ],
+    "skills": {
+      "採取": 85,
+      "観察": 70
+    },
+    "personality": "口数が少なく森に詳しい",
+    "goal": "未知の素材を見つける",
+    "relationships": {
+      "res_003": "採取品を売る相手"
+    },
+    "health": "良好",
+    "current_activity": "コルク森のパトロール",
+    "past_important_events": [
+      "もすもすに懐かれている"
+    ]
+  },
+  {
+    "id": "res_005",
+    "name": "セラ・ノート",
+    "age": 61,
+    "occupation": "学者／歴史家",
+    "residence": "ソコノマチ中心",
+    "organization": "記録小屋（客員）",
+    "assets": 200,
+    "knowledge": [
+      "歴史",
+      "法則理論",
+      "基礎調合"
+    ],
+    "skills": {
+      "学識": 90,
+      "錬金術": 50
+    },
+    "personality": "慎重で仮説と発見を厳密に分ける",
+    "goal": "錬金法則の体系化",
+    "relationships": {
+      "res_001": "弟子のような存在",
+      "res_002": "研究の助言者"
+    },
+    "health": "良好",
+    "current_activity": "法則ノートを整理している",
+    "past_important_events": [
+      "五法則の言語化に貢献"
+    ]
+  },
+  {
+    "id": "res_006",
+    "name": "ブラン・フォージ",
+    "age": 40,
+    "occupation": "鍛冶職人",
+    "residence": "ソコノマチ東端",
+    "organization": "鍛冶小屋",
+    "assets": 280,
+    "knowledge": [
+      "鍛冶",
+      "金属"
+    ],
+    "skills": {
+      "鍛冶": 82,
+      "錬金術": 30
+    },
+    "personality": "職人気質で口が悪いが腕は確か",
+    "goal": "錬金釜の改良",
+    "relationships": {
+      "res_002": "共同研究",
+      "res_007": "幼なじみ"
+    },
+    "health": "良好",
+    "current_activity": "釜の修理",
+    "past_important_events": [
+      "鉄苔の硬化性に最初に気づいた"
+    ]
+  },
+  {
+    "id": "res_007",
+    "name": "ミア・ルーメ",
+    "age": 26,
+    "occupation": "治療師",
+    "residence": "映し湖畔",
+    "organization": "映し湖治療院",
+    "assets": 150,
+    "knowledge": [
+      "医療",
+      "薬草"
+    ],
+    "skills": {
+      "医療": 80,
+      "調合": 60
+    },
+    "personality": "穏やかで聞き上手",
+    "goal": "ぽかぽか薬の改良と病の予防",
+    "relationships": {
+      "res_006": "幼なじみ",
+      "res_002": "薬の依頼先"
+    },
+    "health": "良好",
+    "current_activity": "治療院で薬を調合",
+    "past_important_events": [
+      "朝露の治療効果を記録した"
+    ]
+  },
+  {
+    "id": "res_008",
+    "name": "トビ・クルル",
+    "age": 16,
+    "occupation": "配達人／冒険見習い",
+    "residence": "ソコノマチ",
+    "organization": "くるり川市場（手伝い）",
+    "assets": 45,
+    "knowledge": [
+      "地理",
+      "配達"
+    ],
+    "skills": {
+      "脚力": 75,
+      "好奇心": 90
+    },
+    "personality": "元気で未知に飛び込む",
+    "goal": "フラスコの首の向こうを探索する",
+    "relationships": {
+      "res_003": "雇い主",
+      "res_004": "憧れの採取者"
+    },
+    "health": "良好",
+    "current_activity": "市場と工房を往復している",
+    "past_important_events": [
+      "くるり川を一周した最年少記録を持つ"
+    ]
+  }
+]

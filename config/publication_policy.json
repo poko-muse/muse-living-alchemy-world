@@ -1,0 +1,10 @@
+{
+  "is_fictional_world": true,
+  "fiction_disclosure_required": true,
+  "external_publication_requires_fu_approval": true,
+  "github_account_creation_requires_fu_approval": true,
+  "github_push_requires_fu_approval": true,
+  "cloudflare_use": "forbidden_for_this_project",
+  "github_pages_note": "Creative publication as main purpose is candidate; commerce as main purpose is against GitHub Pages ToS and would require migration",
+  "automatic_operation_configured": false
+}

@@ -1,0 +1,84 @@
+[
+  {
+    "id": "rec_001",
+    "name": "ぽかぽか薬",
+    "status": "known",
+    "materials": [
+      {
+        "material_id": "mat_001",
+        "amount": 2
+      },
+      {
+        "material_id": "mat_004",
+        "amount": 1
+      }
+    ],
+    "equipment": "小型錬金釜",
+    "condition": "弱火・霧のない午前",
+    "effect": "体を温める薬。治療院で使用。",
+    "knowledge_required": [
+      "基礎調合"
+    ]
+  },
+  {
+    "id": "rec_002",
+    "name": "霧よけランプ油",
+    "status": "known",
+    "materials": [
+      {
+        "material_id": "mat_007",
+        "amount": 1
+      },
+      {
+        "material_id": "mat_012",
+        "amount": 2
+      }
+    ],
+    "equipment": "ガラス瓶",
+    "condition": "密閉・低温",
+    "effect": "霧の中でも消えにくいランプ油。",
+    "knowledge_required": [
+      "基礎調合",
+      "霧の扱い"
+    ]
+  },
+  {
+    "id": "rec_003",
+    "name": "硬化樹脂",
+    "status": "researching",
+    "materials": [
+      {
+        "material_id": "mat_002",
+        "amount": 2
+      },
+      {
+        "material_id": "mat_009",
+        "amount": 1
+      }
+    ],
+    "equipment": "鍛冶併用釜",
+    "condition": "中火・加圧",
+    "effect": "コルクを硬くする樹脂（未完成）。",
+    "knowledge_required": [
+      "基礎調合",
+      "硬化理論"
+    ]
+  },
+  {
+    "id": "rec_004",
+    "name": "星屑触媒（仮説）",
+    "status": "hypothesis",
+    "materials": [
+      {
+        "material_id": "mat_011",
+        "amount": 1
+      }
+    ],
+    "equipment": "未知",
+    "condition": "未知",
+    "effect": "未検証仮説。素材が未発見のため意図的な実験は不可（知識の門）。",
+    "knowledge_required": [
+      "未知の知識"
+    ]
+  }
+]

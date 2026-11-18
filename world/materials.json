@@ -1,0 +1,240 @@
+[
+  {
+    "id": "mat_001",
+    "name": "しずく草",
+    "category": "植物",
+    "origin": "くるり川沿い",
+    "rarity": "common",
+    "properties": [
+      "保水",
+      "柔軟"
+    ],
+    "attribute": "水",
+    "stability": 80,
+    "uses": [
+      "薬",
+      "湿布"
+    ],
+    "gathering_condition": "朝、川沿いで採取",
+    "discovery_status": "discovered",
+    "market_value": 5
+  },
+  {
+    "id": "mat_002",
+    "name": "コルク樹皮",
+    "category": "樹皮",
+    "origin": "コルク森",
+    "rarity": "common",
+    "properties": [
+      "断熱",
+      "軽量"
+    ],
+    "attribute": "土",
+    "stability": 90,
+    "uses": [
+      "容器",
+      "建材"
+    ],
+    "gathering_condition": "落皮のみ採取、幹を傷つけない",
+    "discovery_status": "discovered",
+    "market_value": 8
+  },
+  {
+    "id": "mat_003",
+    "name": "くるり丸石",
+    "category": "鉱物",
+    "origin": "くるり川",
+    "rarity": "common",
+    "properties": [
+      "円滑",
+      "重し"
+    ],
+    "attribute": "土",
+    "stability": 95,
+    "uses": [
+      "錬金釜の重し",
+      "建材"
+    ],
+    "gathering_condition": "川の浅瀬",
+    "discovery_status": "discovered",
+    "market_value": 3
+  },
+  {
+    "id": "mat_004",
+    "name": "映し湖の朝露",
+    "category": "液体",
+    "origin": "映し湖",
+    "rarity": "uncommon",
+    "properties": [
+      "映写",
+      "冷却"
+    ],
+    "attribute": "水",
+    "stability": 60,
+    "uses": [
+      "溶媒",
+      "治療"
+    ],
+    "gathering_condition": "日の出前のみ採取可能",
+    "discovery_status": "discovered",
+    "market_value": 15
+  },
+  {
+    "id": "mat_005",
+    "name": "もすもす苔",
+    "category": "苔",
+    "origin": "コルク森",
+    "rarity": "common",
+    "properties": [
+      "吸音",
+      "保湿"
+    ],
+    "attribute": "土",
+    "stability": 75,
+    "uses": [
+      "緩衝材",
+      "薬"
+    ],
+    "gathering_condition": "もすもすを起こさないよう静かに採取",
+    "discovery_status": "discovered",
+    "market_value": 6
+  },
+  {
+    "id": "mat_006",
+    "name": "ガラス砂",
+    "category": "鉱物",
+    "origin": "ガラス壁のふもと",
+    "rarity": "uncommon",
+    "properties": [
+      "透明",
+      "研磨"
+    ],
+    "attribute": "光",
+    "stability": 85,
+    "uses": [
+      "レンズ",
+      "容器"
+    ],
+    "gathering_condition": "流れ星の翌日に少量だけ落ちる",
+    "discovery_status": "discovered",
+    "market_value": 20
+  },
+  {
+    "id": "mat_007",
+    "name": "霧結晶",
+    "category": "結晶",
+    "origin": "フラスコの首付近の雲",
+    "rarity": "rare",
+    "properties": [
+      "霧化",
+      "揮発"
+    ],
+    "attribute": "霧",
+    "stability": 40,
+    "uses": [
+      "霧よけ研究",
+      "香"
+    ],
+    "gathering_condition": "霧の濃い朝に天窓下で結晶化",
+    "discovery_status": "discovered",
+    "market_value": 30
+  },
+  {
+    "id": "mat_008",
+    "name": "プリン花の蜜",
+    "category": "花蜜",
+    "origin": "ぽこ丘",
+    "rarity": "uncommon",
+    "properties": [
+      "甘味",
+      "鎮静"
+    ],
+    "attribute": "光",
+    "stability": 55,
+    "uses": [
+      "菓子",
+      "鎮静薬"
+    ],
+    "gathering_condition": "丘の花が咲く日に少量",
+    "discovery_status": "discovered",
+    "market_value": 18
+  },
+  {
+    "id": "mat_009",
+    "name": "鉄苔",
+    "category": "苔/鉱物",
+    "origin": "鍛冶小屋裏の岩",
+    "rarity": "uncommon",
+    "properties": [
+      "磁性",
+      "硬化"
+    ],
+    "attribute": "火",
+    "stability": 70,
+    "uses": [
+      "硬化剤",
+      "鍛冶"
+    ],
+    "gathering_condition": "岩肌から剥離",
+    "discovery_status": "discovered",
+    "market_value": 22
+  },
+  {
+    "id": "mat_010",
+    "name": "月光キノコ",
+    "category": "菌類",
+    "origin": "コルク森の影",
+    "rarity": "rare",
+    "properties": [
+      "発光",
+      "眠気"
+    ],
+    "attribute": "霧",
+    "stability": 45,
+    "uses": [
+      "灯り",
+      "睡眠薬研究"
+    ],
+    "gathering_condition": "夜のみ、光を遮って採取",
+    "discovery_status": "discovered",
+    "market_value": 28
+  },
+  {
+    "id": "mat_011",
+    "name": "星屑粉",
+    "category": "未知粉末",
+    "origin": "不明（流れ星由来と仮説）",
+    "rarity": "unknown",
+    "properties": [
+      "未知"
+    ],
+    "attribute": "光",
+    "stability": 20,
+    "uses": [
+      "未知"
+    ],
+    "gathering_condition": "未確認",
+    "discovery_status": "undiscovered",
+    "market_value": 0
+  },
+  {
+    "id": "mat_012",
+    "name": "火種の種",
+    "category": "種子",
+    "origin": "ソコノマチの畑",
+    "rarity": "common",
+    "properties": [
+      "発熱",
+      "発芽"
+    ],
+    "attribute": "火",
+    "stability": 65,
+    "uses": [
+      "燃料",
+      "農業"
+    ],
+    "gathering_condition": "収穫期に採取",
+    "discovery_status": "discovered",
+    "market_value": 7
+  }
+]
