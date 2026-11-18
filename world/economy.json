@@ -17,13 +17,13 @@
         },
         {
           "material_id": "mat_002",
-          "stock": 16,
-          "price": 7
+          "stock": 15,
+          "price": 8
         },
         {
           "material_id": "mat_012",
-          "stock": 10,
-          "price": 8
+          "stock": 9,
+          "price": 9
         }
       ]
     },
@@ -34,18 +34,18 @@
       "inventory": [
         {
           "material_id": "mat_004",
-          "stock": 5,
-          "price": 16
+          "stock": 4,
+          "price": 17
         },
         {
           "material_id": "mat_006",
-          "stock": 4,
-          "price": 20
+          "stock": 2,
+          "price": 21
         },
         {
           "material_id": "mat_007",
-          "stock": 5,
-          "price": 29
+          "stock": 2,
+          "price": 30
         }
       ]
     }
