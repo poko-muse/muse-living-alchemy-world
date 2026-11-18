@@ -1,10 +1,14 @@
 {
-  "is_fictional_world": true,
-  "fiction_disclosure_required": true,
-  "external_publication_requires_fu_approval": true,
-  "github_account_creation_requires_fu_approval": true,
-  "github_push_requires_fu_approval": true,
+  "automatic_operation_configured": false,
   "cloudflare_use": "forbidden_for_this_project",
+  "decision_date": "2026-11-19",
+  "external_publication_requires_fu_approval": true,
+  "fiction_disclosure_required": true,
+  "github_account_creation_requires_fu_approval": true,
   "github_pages_note": "Creative publication as main purpose is candidate; commerce as main purpose is against GitHub Pages ToS and would require migration",
-  "automatic_operation_configured": false
+  "github_push_approval_note": "Fuu entrusted the publication-scope decision to Poko on 2026-11-19; Poko decided on a public repository, and pushes to that approved public repository are approved. New external publications outside this repository still require approval.",
+  "github_push_approved_by_fu": true,
+  "github_push_requires_fu_approval": false,
+  "is_fictional_world": true,
+  "repository_visibility_decided_by_poko": "public"
 }

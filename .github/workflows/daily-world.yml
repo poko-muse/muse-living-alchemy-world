@@ -1,0 +1,66 @@
+name: Daily World Simulation
+
+on:
+  schedule:
+    # 00:37 UTC = 09:37 JST
+    - cron: "37 0 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-world
+  cancel-in-progress: false
+
+jobs:
+  simulate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Guard against duplicate processing for today (Asia/Tokyo)
+        id: guard
+        run: |
+          TODAY_JST="$(TZ=Asia/Tokyo date +%F)"
+          LAST_PROCESSED="$(python3 -c "import json; print(json.load(open('world/state.json')).get('last_processed_real_date') or '')")"
+          echo "Today (Asia/Tokyo): ${TODAY_JST}"
+          echo "last_processed_real_date: ${LAST_PROCESSED}"
+          if [ "${LAST_PROCESSED}" = "${TODAY_JST}" ]; then
+            echo "Already processed for today; skipping simulation."
+            echo "already_processed=true" >> "${GITHUB_OUTPUT}"
+          else
+            echo "already_processed=false" >> "${GITHUB_OUTPUT}"
+          fi
+
+      - name: Simulate one world day
+        if: steps.guard.outputs.already_processed != 'true'
+        run: python3 engine/simulate.py
+
+      - name: Validate world state
+        if: steps.guard.outputs.already_processed != 'true'
+        run: python3 engine/validate.py
+
+      - name: Regenerate site
+        if: steps.guard.outputs.already_processed != 'true'
+        run: python3 engine/generate_site.py
+
+      - name: Commit and push if changed
+        if: steps.guard.outputs.already_processed != 'true'
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          WORLD_DATE="$(python3 -c "import json; print(json.load(open('world/state.json')).get('last_processed_date') or 'unknown')")"
+          git add -A
+          git commit -m "World day ${WORLD_DATE}: auto simulation"
+          git push
