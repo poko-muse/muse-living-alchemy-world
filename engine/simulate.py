@@ -2,7 +2,8 @@
 """Simulate one flask day. Duplicate processing is forbidden."""
 import json, sys, random, hashlib
 from pathlib import Path
-from datetime import date, timedelta
+from datetime import date, timedelta, datetime
+from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT/"engine"))
@@ -86,7 +87,7 @@ def main():
     # update state
     state["weather"]=weather
     state["last_processed_date"]=target
-    state["last_processed_real_date"]=date.today().isoformat()
+    state["last_processed_real_date"]=datetime.now(ZoneInfo("Asia/Tokyo")).date().isoformat()
     nxt = next_date(target)
     state["current_date"]=nxt
     state["current_day_index"]=state.get("current_day_index",1)+1

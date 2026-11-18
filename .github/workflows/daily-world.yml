@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: daily-world
@@ -64,3 +65,12 @@ jobs:
           git add -A
           git commit -m "World day ${WORLD_DATE}: auto simulation"
           git push
+
+      - name: Dispatch Pages deploy
+        if: steps.guard.outputs.already_processed != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # Pushes made with GITHUB_TOKEN do not trigger other workflows,
+          # so dispatch the Pages deploy explicitly (workflow_dispatch is exempt).
+          gh workflow run pages.yml --ref main

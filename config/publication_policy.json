@@ -1,5 +1,6 @@
 {
-  "automatic_operation_configured": false,
+  "automatic_operation_configured": true,
+  "automatic_operation_note": "Verified 2026-11-19: daily-world schedule (09:37 JST) configured, manual dispatch run succeeded with bot commit for world day 0001-01-02, Pages deploy via workflow verified live.",
   "cloudflare_use": "forbidden_for_this_project",
   "decision_date": "2026-11-19",
   "external_publication_requires_fu_approval": true,
