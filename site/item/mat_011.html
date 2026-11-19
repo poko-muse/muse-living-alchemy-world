@@ -1,0 +1,64 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>星屑粉 — フラスカリア</title><style>
+*{box-sizing:border-box}
+body{font-family:"Hiragino Maru Gothic ProN","Hiragino Sans",sans-serif;margin:0;background:#f3e5c3;color:#4a3826;line-height:1.75;padding-bottom:78px}
+.wrap{max-width:760px;margin:0 auto;padding:0 12px 32px}
+.topbar{background:linear-gradient(180deg,#8a5a2b,#6f451d);color:#ffe9bd;text-align:center;padding:10px 8px 8px;box-shadow:0 2px 8px rgba(90,55,10,.35)}
+.topbar .t{font-size:19px;font-weight:800;letter-spacing:.14em}
+.topbar .s{font-size:11px;opacity:.85}
+.hero{position:relative;margin:12px 0 6px}
+.hero img{width:100%;height:auto;display:block;border-radius:18px;box-shadow:0 10px 30px rgba(120,84,30,.25);border:4px solid #a4712f}
+.hero .titlebox{position:absolute;left:10px;right:10px;bottom:10px;background:rgba(255,250,240,.93);border-radius:14px;padding:10px 14px;box-shadow:0 4px 14px rgba(120,84,30,.18)}
+.hero h1{margin:0;font-size:27px;letter-spacing:.06em;color:#7a4d16}
+.hero .sub{margin:2px 0 8px;font-size:12.5px;color:#8a6a45}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{background:#eaf6f3;border:1px solid #bfe0d8;color:#22665c;border-radius:999px;padding:2px 10px;font-size:12.5px;font-weight:700}
+.chip.warm{background:#fdeeda;border-color:#f3d3a1;color:#96620f}
+section{margin-top:26px}
+h2.ribbon{font-size:19px;color:#fff8e6;background:linear-gradient(180deg,#b3813a,#96681f);border-radius:10px;padding:7px 14px;margin:0 0 8px;box-shadow:0 3px 8px rgba(120,84,30,.25);letter-spacing:.05em}
+.lead{font-size:13.5px;color:#8a6a45;margin:0 0 12px}
+.panel{background:#fffaf0;border:2px solid #d9bd7f;border-radius:16px;padding:14px 16px;box-shadow:0 3px 10px rgba(120,84,30,.10);margin-bottom:12px}
+.panel h3{margin:0 0 8px;font-size:16px;color:#7a4d16}
+.story .day{font-weight:700;color:#96620f;font-size:14px;margin-bottom:6px}
+.story ul{margin:6px 0 0;padding-left:20px}
+.story li{margin:4px 0}
+.exp{background:#fdf3d8;border:1px solid #f0d48a;border-radius:12px;padding:10px 12px;margin-top:10px}
+.exp b{color:#96620f}
+.cards{display:flex;flex-wrap:wrap;gap:12px}
+
+.card{background:#fffaf0;border:2px solid #e0cd9a;border-radius:14px;padding:10px;width:calc(50% - 6px);box-shadow:0 3px 10px rgba(120,84,30,.07)}
+@media(min-width:640px){.card{width:calc(33.333% - 8px)}}
+.card a{color:inherit;text-decoration:none}
+.card p{margin:6px 0 0;font-size:14px}
+.card .meta{font-size:12px;color:#8a6a45}
+.item-img{display:block;width:100%;height:auto;border-radius:10px}
+.big-img{display:block;width:100%;max-width:420px;height:auto;border-radius:14px;margin:0 auto}
+.minis{display:flex;gap:10px;overflow-x:auto;padding:4px 2px 8px}
+.mini{flex:0 0 92px;text-align:center;text-decoration:none;color:inherit}
+.mini img{width:92px;height:92px;object-fit:cover;border-radius:12px;border:2px solid #e0cd9a;background:#fffaf0}
+.mini .n{font-size:11.5px;font-weight:700;margin-top:2px}
+.badge{display:inline-block;background:#fdeeda;border:1px solid #f3d3a1;color:#96620f;border-radius:999px;padding:0 8px;font-size:11.5px;font-weight:700;margin-left:6px}
+.badge.undis{background:#eee;border-color:#ccc;color:#777}
+.dlist{font-size:14px;margin:10px 0;padding:12px 14px;background:#fdf6e0;border-radius:12px}
+.dlist div{margin:4px 0}
+.dlist .k{font-weight:700;color:#96620f}
+.stats{display:flex;flex-wrap:wrap;gap:8px}
+.stat{flex:1 1 100px;background:#fdf6e0;border:1px solid #e7dab9;border-radius:12px;padding:8px 10px;text-align:center}
+.stat .v{font-size:19px;font-weight:800;color:#7a4d16}
+.stat .l{font-size:11.5px;color:#8a6a45}
+.btn{display:inline-block;background:linear-gradient(180deg,#e8a93d,#cf8417);color:#fff;font-weight:800;border-radius:999px;padding:8px 18px;text-decoration:none;box-shadow:0 3px 8px rgba(150,100,20,.35);font-size:14px}
+.btn.sub{background:linear-gradient(180deg,#5ea79c,#3f8a7f)}
+.daylink{display:block;background:#fffaf0;border:2px solid #e0cd9a;border-radius:14px;padding:10px 14px;margin-bottom:10px;text-decoration:none;color:inherit}
+.daylink .d{font-weight:800;color:#96620f}
+.daylink .t{font-size:13.5px;color:#6b5136}
+.pager{display:flex;justify-content:space-between;margin-top:16px}
+.tabbar{position:fixed;left:0;right:0;bottom:0;background:rgba(255,250,240,.97);border-top:2px solid #d9bd7f;display:flex;z-index:10;box-shadow:0 -3px 10px rgba(120,84,30,.12)}
+.tabbar a{flex:1;text-align:center;padding:7px 0 9px;font-size:11.5px;font-weight:700;color:#8a6a45;text-decoration:none}
+.tabbar a .ic{display:block;font-size:19px;line-height:1.2}
+.tabbar a.on{color:#b57a17}
+footer{margin-top:34px;font-size:12px;color:#a08760;text-align:center}
+details{margin-top:8px}
+summary{cursor:pointer;font-size:13px;font-weight:700;color:#22665c;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"＋ "}
+details[open ] summary::before{content:"－ "}
+</style></head><body><div class="topbar"><div class="t">フラスカリア</div><div class="s">MUSE LIVING ALCHEMY WORLD</div></div><div class="wrap"><section><h2 class="ribbon">星屑粉</h2><img class="big-img" src="../assets/items/mat_011.webp" alt="星屑粉" loading="lazy"><div class="chips" style="margin-top:10px"><span class="chip">未知粉末</span><span class="chip">属性：光</span><span class="chip warm">未発見</span></div><p>まだ正体がわかっていない、幻の素材。発見の記録はまだありません。</p><div class="dlist"><div><span class="k">産地</span>：不明（流れ星由来と仮説）</div><div><span class="k">性質</span>：未知</div><div><span class="k">使いみち</span>：未知</div><div><span class="k">採取</span>：未確認</div><div><span class="k">珍しさ</span>：unknown</div><div><span class="k">安定度</span>：20</div><div><span class="k">市場価格</span>：0 Dr</div></div><h3>この素材を使う調合</h3><p><a class="btn sub" href="rec_004.html">星屑触媒（仮説）</a></p><p><a class="btn" href="../zukan.html">図鑑にもどる</a></p></section></div><nav class="tabbar"><a href="../index.html" class=""><span class="ic">🏠</span>トップ</a><a href="../zukan.html" class="on"><span class="ic">📖</span>図鑑</a><a href="../residents.html" class=""><span class="ic">🧑‍🤝‍🧑</span>住民</a><a href="../journal.html" class=""><span class="ic">📜</span>日誌</a><a href="../about.html" class=""><span class="ic">🌿</span>世界について</a></nav></body></html>
