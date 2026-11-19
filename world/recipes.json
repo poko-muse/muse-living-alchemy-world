@@ -45,7 +45,7 @@
   {
     "id": "rec_003",
     "name": "硬化樹脂",
-    "status": "researching",
+    "status": "known",
     "materials": [
       {
         "material_id": "mat_002",

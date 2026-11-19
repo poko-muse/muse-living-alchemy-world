@@ -81,6 +81,11 @@ def main():
     exp_id = f"exp_{target.replace('-','')}_001"
     if success:
         events.append(f"錬金実験 {exp_id}: ルナが「{recipe['name']}」の実験に成功（{reason}）")
+        # 研究中レシピの成功は「製法の確立」として知識化する（知識の門：再現と記録が知識になる）
+        if recipe.get("status") == "researching":
+            recipe["status"] = "known"
+            events.append(f"製法確立: 「{recipe['name']}」の製法が確立し、工房の知識になった")
+            save("recipes.json", recipes)
         # consume 1 of first material from workshop inventory if present, never negative
         for shop in economy["shops"]:
             for item in shop["inventory"]:

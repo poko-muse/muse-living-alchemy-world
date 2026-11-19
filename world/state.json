@@ -1,21 +1,18 @@
 {
   "world_name": "フラスカリア",
   "world_seed": 421337,
-  "current_date": "0001-01-03",
-  "current_date_display": "フラスコ暦1年1月3日",
-  "current_day_index": 3,
-  "last_processed_date": "0001-01-02",
-  "last_processed_real_date": "2026-11-19",
+  "current_date": "0001-01-04",
+  "current_date_display": "フラスコ暦1年1月4日",
+  "current_day_index": 4,
+  "last_processed_date": "0001-01-03",
+  "last_processed_real_date": "2026-11-20",
   "real_date_basis": "2026-11-18",
   "calendar_rule": "現実世界の1日 = フラスコ世界の1日。同一フラスコ日付の二重処理は禁止。",
   "season": "霧の季",
-  "weather": "晴れ",
+  "weather": "流れ星の気配",
   "population": 8,
   "town_id": "town_001",
   "status": "operating",
   "automatic_operation_configured": true,
-  "pending_world_events": [
-    "大移し替えの日：世界はフラスコの器を離れ、机の上の箱庭へと移された。丘も川も森も湖も街も、姿はそのままに",
-    "フラスコは器ではなく、この世界を貫く「理」として残る。住民たちはガラスの天蓋の向こうの新しい空を見上げ、いつもの朝を迎えた"
-  ]
+  "pending_world_events": []
 }
