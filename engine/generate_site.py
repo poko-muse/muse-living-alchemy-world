@@ -227,7 +227,7 @@ def main():
     html = f"""<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>フラスカリア — MUSE LIVING ALCHEMY WORLD</title><style>{CSS}</style></head><body>
 <div class="wrap">
 <div class="hero">{map_img}
-<div class="titlebox"><h1>フラスカリア</h1><p class="sub">巨大なフラスコの中で営まれる、小さな錬金術の世界。毎日、少しずつ物語が進んでいます。</p>
+<div class="titlebox"><h1>フラスカリア</h1><p class="sub">机の上の箱庭で営まれる、小さな錬金術の世界。フラスコの理のもとに生まれ、毎日、少しずつ物語が進んでいます。</p>
 <div class="chips"><span class="chip warm">📅 {esc(state.get('current_date_display',''))}</span><span class="chip">季節：{esc(state.get('season',''))}</span><span class="chip">天気：{esc(state.get('weather',''))}</span><span class="chip">人口：{esc(state.get('population',''))}人</span></div>
 </div></div>
 <section><h2>今日のフラスカリア</h2><p class="lead">世界で今日起きたことを、記録者のポコが書き留めています。</p>{today_html}</section>
@@ -235,7 +235,7 @@ def main():
 <section><h2>調合品図鑑</h2><p class="lead">素材を組み合わせて生まれる錬金品。レシピの中身も見られます。</p><div class="cards">{rec_html}</div></section>
 <section><h2>住民名鑑</h2><p class="lead">この世界に暮らす8人。それぞれの目標や、いま取り組んでいることがあります。</p><div class="cards">{res_html}</div></section>
 <section><h2>世界の歩み</h2><p class="lead">創世からの記録です。失敗も成功も、消さずに残しています。</p>{journal_html}</section>
-<section><h2>この世界について</h2><div class="about"><p>{container}</p><p>主な場所：{esc(regions)}</p><p>中央のぽこ丘をくるり川が一周し、コルク森と映し湖が向き合い、フラスコの首が天窓になっています。</p></div></section>
+<section><h2>この世界について</h2><div class="about"><p>{container}</p><p>主な場所：{esc(regions)}</p><p>中央のぽこ丘をくるり川が一周し、コルク森と映し湖が向き合い、空は光を通すガラスの天蓋になっています。</p></div></section>
 <footer>※これは架空世界の創作プロジェクトです。世界・住民・錬金術はすべて架空です。<br>MUSE LIVING ALCHEMY WORLD — フラスカリア</footer>
 </div>
 </body></html>"""

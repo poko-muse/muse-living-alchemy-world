@@ -13,5 +13,9 @@
   "population": 8,
   "town_id": "town_001",
   "status": "operating",
-  "automatic_operation_configured": true
+  "automatic_operation_configured": true,
+  "pending_world_events": [
+    "大移し替えの日：世界はフラスコの器を離れ、机の上の箱庭へと移された。丘も川も森も湖も街も、姿はそのままに",
+    "フラスコは器ではなく、この世界を貫く「理」として残る。住民たちはガラスの天蓋の向こうの新しい空を見上げ、いつもの朝を迎えた"
+  ]
 }

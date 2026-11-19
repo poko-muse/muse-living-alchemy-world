@@ -54,9 +54,14 @@ def main():
     recipes = load("recipes.json")
     economy = load("economy.json")
 
-    weathers = ["晴れ","朝霧のち晴れ","曇り","小雨（首の雲から）","流れ星の気配"]
+    weathers = ["晴れ","朝霧のち晴れ","曇り","小雨（天蓋の雲から）","流れ星の気配"]
     weather = rng.choice(weathers)
     events = [f"天候: {weather}"]
+
+    # 世界規模の特別イベント（移し替え等）が予約されていれば、この日の記録に含める
+    pending = state.get("pending_world_events") or []
+    for pe in pending:
+        events.append(pe)
 
     # resident actions (simple, based on goal/occupation)
     actor = rng.choice([r for r in residents if r["id"]!="res_001"])
@@ -85,6 +90,7 @@ def main():
         events.append(f"錬金実験 {exp_id}: ルナが「{recipe['name']}」の実験に失敗/進展なし（{reason}）")
 
     # update state
+    state["pending_world_events"]=[]
     state["weather"]=weather
     state["last_processed_date"]=target
     state["last_processed_real_date"]=datetime.now(ZoneInfo("Asia/Tokyo")).date().isoformat()

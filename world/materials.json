@@ -103,7 +103,7 @@
     "id": "mat_006",
     "name": "ガラス砂",
     "category": "鉱物",
-    "origin": "ガラス壁のふもと",
+    "origin": "ガラスの天蓋のふもと",
     "rarity": "uncommon",
     "properties": [
       "透明",
@@ -123,7 +123,7 @@
     "id": "mat_007",
     "name": "霧結晶",
     "category": "結晶",
-    "origin": "フラスコの首付近の雲",
+    "origin": "ガラスの天蓋付近の雲",
     "rarity": "rare",
     "properties": [
       "霧化",
