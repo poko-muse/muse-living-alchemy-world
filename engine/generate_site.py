@@ -116,6 +116,17 @@ CSS2 = """
 .tabbar a .ic{display:block;font-size:19px;line-height:1.2}
 .tabbar a.on{color:#b57a17}
 footer{margin-top:34px;font-size:12px;color:#a08760;text-align:center}
+.bubble{position:relative;background:#fffaf0;border:2px solid #d9bd7f;border-radius:16px;padding:12px 16px;box-shadow:0 3px 10px rgba(120,84,30,.10)}
+.bubble::after{content:"";position:absolute;top:-11px;left:36px;border:6px solid transparent;border-bottom:8px solid #d9bd7f}
+.bubble .who{font-weight:800;color:#96620f;font-size:13px}
+.bubble p{margin:2px 0 0;font-size:14.5px}
+.circles{display:flex;gap:10px;overflow-x:auto;padding:6px 2px 10px}
+.circle{flex:0 0 76px;text-align:center;text-decoration:none;color:inherit}
+.circle img{width:76px;height:76px;object-fit:cover;border-radius:50%;border:3px solid #e8cf8f;background:#fffaf0;box-shadow:0 3px 8px rgba(120,84,30,.15)}
+.circle .n{font-size:11px;font-weight:700;margin-top:2px;line-height:1.35}
+.bigbtns{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.bigbtn{display:flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(180deg,#fff6dd,#ffeec2);border:2px solid #d9bd7f;border-radius:16px;padding:14px 6px;font-size:16px;font-weight:800;color:#7a4d16;text-decoration:none;box-shadow:0 3px 8px rgba(120,84,30,.15)}
+.bigbtn .ic{font-size:22px}
 details{margin-top:8px}
 summary{cursor:pointer;font-size:13px;font-weight:700;color:#22665c;list-style:none}
 summary::-webkit-details-marker{display:none}
@@ -130,7 +141,7 @@ TABS = [
     ("zukan.html", "図鑑", "📖"),
     ("residents.html", "住民", "🧑‍🤝‍🧑"),
     ("journal.html", "日誌", "📜"),
-    ("about.html", "世界について", "🌿"),
+    ("map.html", "地図", "🗺️"),
 ]
 
 
@@ -201,6 +212,91 @@ def main():
     hero_rel = "assets/keyvisual.webp" if img_exists("assets/keyvisual.webp") else "assets/maps/flaskaria_overview.webp"
     today = hist[-1] if hist else None
     today_html = story_block(today, link=True) if today else "<div class=\"panel\">まだ記録がありません。</div>"
+
+    # ポコのいま（最新の日の記録から実データで組み立てる）
+    poco_html = ""
+    if today:
+        evs = story_events(today)
+        poco_line = next((e for e in evs if "ポコ" in e), "記録小屋で本日の記録を書いた")
+        exp_note = ""
+        for e in evs:
+            mm = re.search(r"ルナが「(.+?)」の実験に(成功|失敗/進展なし)", e)
+            if mm:
+                exp_note = (
+                    f"ルナの「{mm.group(1)}」の実験が成功しました！"
+                    if mm.group(2) == "成功"
+                    else f"ルナは「{mm.group(1)}」の研究を進めています。"
+                )
+        poco_html = (
+            f"<div class=\"bubble\"><span class=\"who\">🟢 ポコのいま</span>"
+            f"<p>{esc(poco_line)}。{esc(exp_note)}</p></div>"
+        )
+
+    # 状態パネル（現実の日付は最終処理日から）
+    from datetime import date as _date
+
+    real_label = ""
+    lrd = state.get("last_processed_real_date", "")
+    if lrd:
+        try:
+            _d = _date.fromisoformat(lrd)
+            real_label = f"{_d.month}月{_d.day}日（{'月火水木金土日'[_d.weekday()]}）"
+        except ValueError:
+            real_label = lrd
+    status_html = (
+        "<div class=\"panel\"><div class=\"stats\">"
+        f"<div class=\"stat\"><div class=\"v\" style=\"font-size:15px\">{esc(real_label)}</div><div class=\"l\">現実の今日</div></div>"
+        f"<div class=\"stat\"><div class=\"v\" style=\"font-size:15px\">{esc(display_date(today['date'])) if today else ''}</div><div class=\"l\">世界の今日</div></div>"
+        f"<div class=\"stat\"><div class=\"v\">{esc(state.get('weather', ''))}</div><div class=\"l\">天気／{esc(state.get('season', ''))}</div></div>"
+        f"<div class=\"stat\"><div class=\"v\">{esc(state.get('population', ''))}人</div><div class=\"l\">人口</div></div>"
+        "</div></div>"
+    )
+
+    # 注目の素材と調合（丸アイコンの横並び：直近の実験品→その材料→未発見→その他の順）
+    circle_ids = []
+    if today and today.get("experiment"):
+        rid = today["experiment"].get("recipe_id")
+        if rid:
+            circle_ids.append(rid)
+            for mmi in rec_by_id.get(rid, {}).get("materials", []):
+                circle_ids.append(mmi["material_id"])
+    _und = next((m for m in materials if m.get("discovery_status") != "discovered"), None)
+    if _und:
+        circle_ids.append(_und["id"])
+    for m in materials:
+        if len(circle_ids) >= 5:
+            break
+        if m["id"] not in circle_ids and m.get("discovery_status") == "discovered":
+            circle_ids.append(m["id"])
+    circles = ""
+    for cid in circle_ids[:5]:
+        obj = mat_by_id.get(cid) or rec_by_id.get(cid)
+        if not obj or not img_exists(f"assets/items/{cid}.webp"):
+            continue
+        label = esc(obj["name"])
+        if obj.get("discovery_status") == "undiscovered" or (
+            cid in mat_by_id and mat_by_id[cid].get("discovery_status") != "discovered"
+        ):
+            label += "<br>（未発見）"
+        circles += (
+            f"<a class=\"circle\" href=\"item/{cid}.html\">"
+            f"<img src=\"assets/items/{cid}.webp\" alt=\"{esc(obj['name'])}\" loading=\"lazy\">"
+            f"<div class=\"n\">{label}</div></a>"
+        )
+
+    # 今週の調合メモ（直近7日の実験記録）
+    memo_lines = []
+    for d in hist[-7:]:
+        for e in story_events(d):
+            if "錬金実験" in e:
+                memo_lines.append(f"{esc(display_date(d['date']))}：{esc(e.split(':', 1)[-1].strip() if ':' in e else e)}")
+    memo_html = ""
+    if memo_lines:
+        memo_html = (
+            "<div class=\"panel\"><h3>🧪 今週の調合メモ</h3>"
+            + "".join(f"<p style=\"margin:4px 0\">{l}</p>" for l in memo_lines)
+            + "</div>"
+        )
     discovered = sum(1 for m in materials if m.get("discovery_status") == "discovered")
     shop_kinds = len({it["material_id"] for sh in economy.get("shops", []) for it in sh.get("inventory", [])})
     minis = ""
@@ -234,21 +330,31 @@ def main():
             f"<p>まだ正体がわかっていない、幻の素材。いつか誰かが発見する日を、世界は待っています。</p>"
             f"<p><a class=\"btn sub\" href=\"item/{undis['id']}.html\">手がかりを見る</a></p></div>"
         )
+    bigbtns = (
+        "<div class=\"bigbtns\">"
+        "<a class=\"bigbtn\" href=\"zukan.html\"><span class=\"ic\">📖</span>図鑑</a>"
+        "<a class=\"bigbtn\" href=\"journal.html\"><span class=\"ic\">📜</span>世界日誌</a>"
+        "<a class=\"bigbtn\" href=\"map.html\"><span class=\"ic\">🗺️</span>世界地図</a>"
+        "<a class=\"bigbtn\" href=\"residents.html\"><span class=\"ic\">🧑‍🤝‍🧑</span>住民</a>"
+        "</div>"
+    )
     top_body = f"""
 <div class="hero">{img_tag(hero_rel, 'フラスカリア', '')}
-<div class="titlebox"><h1>フラスカリア</h1><p class="sub">机の上の箱庭で営まれる、小さな錬金術の世界。フラスコの理のもとに生まれ、毎日、少しずつ物語が進んでいます。</p>
-<div class="chips"><span class="chip warm">📅 {esc(state.get('current_date_display', ''))}</span><span class="chip">季節：{esc(state.get('season', ''))}</span><span class="chip">天気：{esc(state.get('weather', ''))}</span><span class="chip">人口：{esc(state.get('population', ''))}人</span></div>
+<div class="titlebox"><h1>フラスカリア</h1><p class="sub">小さな世界の観察記 — 机の上の箱庭で営まれる錬金術の世界。フラスコの理のもとに生まれ、毎日、少しずつ物語が進んでいます。</p>
 </div></div>
-<section><h2 class="ribbon">今日のフラスカリア</h2>{today_html}</section>
+<section style="margin-top:14px">{poco_html}</section>
+<section>{status_html}</section>
+<section><h2 class="ribbon">注目の素材と調合</h2><div class="circles">{circles}</div></section>
+<section><h2 class="ribbon">世界の出来事</h2>{today_html}</section>
+<section>{memo_html}</section>
 <section><h2 class="ribbon">世界のようす</h2><div class="panel"><div class="stats">
-<div class="stat"><div class="v">{esc(state.get('population', ''))}人</div><div class="l">住民</div></div>
 <div class="stat"><div class="v">{discovered} / {len(materials)}</div><div class="l">発見した素材</div></div>
 <div class="stat"><div class="v">{len(hist)}日</div><div class="l">記録された日々</div></div>
 <div class="stat"><div class="v">{shop_kinds}種</div><div class="l">市場に出回る素材</div></div>
 </div></div></section>
-<section><h2 class="ribbon">集められる素材</h2><p class="lead">フラスカリアで採れる素材たち。タップすると図鑑が開きます。</p><div class="minis">{minis}</div><p><a class="btn" href="zukan.html">図鑑をひらく</a></p></section>
 <section>{feat_html}</section>
 <section>{undis_html}</section>
+<section>{bigbtns}</section>
 <footer>※これは架空世界の創作プロジェクトです。世界・住民・錬金術はすべて架空です。<br>MUSE LIVING ALCHEMY WORLD — フラスカリア</footer>
 """
     write_page("index.html", page("トップ", "index.html", top_body))
@@ -394,6 +500,22 @@ def main():
         "<footer>※これは架空世界の創作プロジェクトです。世界・住民・錬金術はすべて架空です。</footer>"
     )
     write_page("about.html", page("世界について", "about.html", about_body))
+
+    # ---------- 世界地図 ----------
+    fac_html = ""
+    for t in geo.get("towns", []):
+        facs = "、".join(f["name"] for f in t.get("facilities", []))
+        fac_html += f"<div><span class=\"k\">{esc(t['name'])}</span>：{esc(facs)}</div>"
+    map_body = (
+        "<section><h2 class=\"ribbon\">世界地図</h2>"
+        f"{img_tag('assets/maps/flaskaria_overview.webp', 'フラスカリア全景', 'big-img')}"
+        "<p class=\"lead\" style=\"margin-top:8px\">箱庭の全景です。フラスコ時代の姿は「第1章」として記録に残っています。</p>"
+        f"<div class=\"panel\"><h3>主な場所</h3><div class=\"dlist\" style=\"margin:0\">{regions_html}</div></div>"
+        f"<div class=\"panel\"><h3>街と施設</h3><div class=\"dlist\" style=\"margin:0\">{fac_html}</div></div>"
+        "<p><a class=\"btn sub\" href=\"about.html\">世界の成り立ちと五法則</a></p>"
+        "</section>"
+    )
+    write_page("map.html", page("世界地図", "map.html", map_body))
 
 
 if __name__ == "__main__":
