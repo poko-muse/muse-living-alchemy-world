@@ -8,6 +8,11 @@ def item_img(item_id, name):
     if (ROOT/"site"/"assets"/"items"/f"{item_id}.webp").exists():
         return f"<div class=\"card-imgwrap\"><img class=\"item-img\" src=\"assets/items/{item_id}.webp\" alt=\"{name}\" loading=\"lazy\"></div>"
     return ""
+def res_img(res_id, name):
+    # 住民イラストが存在する場合だけ <img> を返す（無ければ文字のみ表示）
+    if (ROOT/"site"/"assets"/"residents"/f"{res_id}.webp").exists():
+        return f"<div class=\"card-imgwrap\"><img class=\"item-img\" src=\"assets/residents/{res_id}.webp\" alt=\"{name}\" loading=\"lazy\"></div>"
+    return ""
 def main():
     state=load("state.json"); residents=load("residents.json"); materials=load("materials.json"); geo=load("geography.json"); recipes=load("recipes.json")
     hist=[]
@@ -16,7 +21,7 @@ def main():
         for line in hp.read_text(encoding="utf-8").strip().splitlines():
             if line.strip(): hist.append(json.loads(line))
     news = hist[-1] if hist else {"date":"-","events":["まだ記録がありません"]}
-    res_html="".join(f"<li><b>{r['name']}</b> — {r['occupation']} / {r['residence']}<br><small>{r['personality']}</small></li>" for r in residents)
+    res_html="".join(f"<div class=\"card\">{res_img(r['id'], r['name'])}<p><b>{r['name']}</b> — {r['occupation']} / {r['residence']}<br><small>{r['personality']}</small></p></div>" for r in residents)
     mat_html="".join(f"<div class=\"card\">{item_img(m['id'], m['name'])}<p><b>{m['name']}</b> ({m['category']}/{m['attribute']}) — {m['origin']} / {m['discovery_status']} / {m['market_value']}Dr</p></div>" for m in materials)
     rec_html="".join(f"<div class=\"card\">{item_img(r['id'], r['name'])}<p><b>{r['name']}</b> ({r['status']})<br><small>{r['effect']}</small></p></div>" for r in recipes)
     hist_html="".join(f"<li>{h['date']}: {'; '.join(h['events'][:3])}</li>" for h in hist) or "<li>創世のみ</li>"
@@ -26,7 +31,7 @@ def main():
 <section><h2>現在の様子</h2><p>日付: {state.get('current_date_display')} / 季節: {state.get('season')} / 天候: {state.get('weather')} / 人口: {state.get('population')}</p></section>
 <section><h2>最新ニュース</h2><p>{news.get('date')}: {'; '.join(news.get('events',[]))}</p></section>
 <section><h2>地図（テキスト図）</h2><p>{regions}</p><p>中央のぽこ丘をくるり川が一周し、コルク森と映し湖が向き合い、フラスコの首が天窓になる。</p></section>
-<section><h2>住民名鑑</h2><ul>{res_html}</ul></section>
+<section><h2>住民名鑑</h2><div class="cards">{res_html}</div></section>
 <section><h2>錬金術図鑑（素材）</h2><div class="cards">{mat_html}</div></section>
 <section><h2>錬金術図鑑（調合品）</h2><div class="cards">{rec_html}</div></section>
 <section><h2>歴史年表</h2><ul>{hist_html}</ul></section>
