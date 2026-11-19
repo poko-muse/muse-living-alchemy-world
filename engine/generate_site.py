@@ -506,12 +506,20 @@ def main():
     for t in geo.get("towns", []):
         facs = "、".join(f["name"] for f in t.get("facilities", []))
         fac_html += f"<div><span class=\"k\">{esc(t['name'])}</span>：{esc(facs)}</div>"
+    ch1_html = ""
+    if img_exists("assets/maps/flaskaria_chapter1_flask.webp"):
+        ch1_html = (
+            "<div class=\"panel\"><h3>📜 第1章の姿（フラスコ時代）</h3>"
+            f"{img_tag('assets/maps/flaskaria_chapter1_flask.webp', 'フラスコ時代のフラスカリア', 'big-img')}"
+            "<p style=\"margin-bottom:0\">世界はもともと巨大なフラスコの中で生まれました。フラスコ暦1年1月3日の「大移し替え」で箱庭へ移る前の、創世の姿です。</p></div>"
+        )
     map_body = (
         "<section><h2 class=\"ribbon\">世界地図</h2>"
         f"{img_tag('assets/maps/flaskaria_overview.webp', 'フラスカリア全景', 'big-img')}"
-        "<p class=\"lead\" style=\"margin-top:8px\">箱庭の全景です。フラスコ時代の姿は「第1章」として記録に残っています。</p>"
+        "<p class=\"lead\" style=\"margin-top:8px\">机の上の箱庭の全景です。中央の丘を川が一周し、底に街が寄り集まっています。</p>"
         f"<div class=\"panel\"><h3>主な場所</h3><div class=\"dlist\" style=\"margin:0\">{regions_html}</div></div>"
         f"<div class=\"panel\"><h3>街と施設</h3><div class=\"dlist\" style=\"margin:0\">{fac_html}</div></div>"
+        f"{ch1_html}"
         "<p><a class=\"btn sub\" href=\"about.html\">世界の成り立ちと五法則</a></p>"
         "</section>"
     )
